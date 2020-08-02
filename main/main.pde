@@ -1,13 +1,13 @@
 //Definindo coordenadas
-static Point p1_init , p1_end, p2_init, p2_end, p3_init, p3_end;                  //Obstáculos
-static Point Objective_Final;                  //Obstáculos
-int x_final = 640, y_final = 620;              //Coordenadas do objetivo
+static Point p1_init , p1_end, p2_init, p2_end, p3_init, p3_end;                  //Pontos do obstáculos
+static Point Objective_Final;                                                     //Ponto do objetivo final
+int x_final = 640, y_final = 620;                                                 //Coordenadas do objetivo
+int Objective_Size = 20;                                                          //Tamanho do objetivo final
 
 int population_size = 500;
 int generation = 0;
 
 FlyPopulation population;
-int Objective_Size = 20;
 static boolean dead;
 
 void setup(){
