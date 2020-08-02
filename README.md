@@ -1,6 +1,8 @@
 # Findhome - AG
 Paulo Katsuyuki Muraishi Kamimura - 10277040
+
 Afonso Henrique Piacentini Garcia - 9795272
+
 Felipe Barbosa de Oliveira - 10276928
 
 # Execução 
