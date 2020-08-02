@@ -9,6 +9,8 @@ boolean canNotMove;
 
 int index ;
 
+float fitness = 0;
+
 Direction dir;
 
 Fly(int x , int y){
@@ -16,6 +18,7 @@ position = new PVector(x,y);
 velocity = new PVector(0,0);
 dir = new Direction(2000);
 index = 0;
+canNotMove = false;
 }
 
 void update(){
@@ -25,16 +28,12 @@ void update(){
   return;
   }
   
-  
-accelerate = dir.directions[index];
-
-index++;
-
-velocity.add(accelerate);
-
-velocity.limit(5);
-
-position.add(velocity);
+    
+  accelerate = dir.directions[index];
+  index++;
+  velocity.add(accelerate);
+  velocity.limit(5);
+  position.add(velocity);
 
 }
 
@@ -48,7 +47,7 @@ void obstecleCheck(){
   float x = this.position.x;
   float y = this.position.y;
   
-  if((y >= main.p1_init.y - 5 && y <= main.p1_init.y + 5 && x >= main.p1_init.x - 10 && x <= main.p1_end.x + 10) || (y >= main.p2_init.y - 5 && y <= main.p2_init.y + 5 && x >= main.p2_init.x - 10 && x <= main.p2_end.x + 10) || (y >= main.p3_init.y - 5 && y <= main.p3_init.y + 5 && x >= main.p3_init.x - 10 && x <= main.p3_end.x + 10) || 
+  if((y >= main.p1_init.y - 5 && y <= main.p1_init.y + 5 && x >= main.p1_init.x - 10 && x <= main.p1_end.x + 10) || 
   (x > width - 2 || x < 2 || y > height - 2 || y < 2 ) || 
   (x >= main.Objective_Final.x - 10 && x <= main.Objective_Final.x + 10 && y >= main.Objective_Final.y - 10 && y <= main.Objective_Final.y + 10) || (index == dir.directions.length))
   canNotMove = true;
@@ -56,11 +55,20 @@ void obstecleCheck(){
 
 void copy(Fly best){
   for(int i = 0; i < dir.directions.length ; i++){
-    if(random(1) < 0.01){
+    dir.directions[i] = best.dir.directions[i];
+    
+  }
+}
+
+void mate(Fly father, Fly mother){
+    for(int i = 0; i < dir.directions.length ; i++){
+    if(random(1) < 0.02){
       dir.directions[i] = PVector.fromAngle(random(PI*2));
     }  
     else{
-    dir.directions[i] = best.dir.directions[i];
+      dir.directions[i].x = (father.dir.directions[i].x + mother.dir.directions[i].x) / 2;
+      dir.directions[i].y = (father.dir.directions[i].y + mother.dir.directions[i].y) / 2;
+
     }
   }
 }

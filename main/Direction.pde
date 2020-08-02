@@ -9,4 +9,6 @@ class Direction{
       directions[i] = PVector.fromAngle(random(PI*2));
     }
   }
+
+
 }

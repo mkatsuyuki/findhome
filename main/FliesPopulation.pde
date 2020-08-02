@@ -45,29 +45,61 @@ class FlyPopulation{
  }
  
  
- void newPopulation(){
-   generation++;
-   main.dead = false;
-  
-   Fly bestFly = getBestFly();
-   
-   for(int i = 0; i < s ; i++){
-     
-     flies[i] = new Fly(width/2  ,20);
-     
-     flies[i].copy(bestFly);
-     
-   }
-   allDead = 0;
- }
+void newPopulation(){
+    generation++;
+    main.dead = false;
+	
+    Fly bestFly = updateFitness();
+
+
+	Fly[] newflies = new Fly[s];
+	newflies[0] = bestFly;
+	newflies[1] = bestFly;
+
+    for(int i = 2; i < s ; i++){
+
+		Fly bestFlyMate = flies[abs(int(random(s)) -1 )];
+		//Random pool of individuals, the best ones are mated 
+		for(int j = 0; j < 10; j++){
+			Fly newFlyMate = flies[abs(int(random(s)) -1 )];
+			if(newFlyMate.fitness < bestFlyMate.fitness ){
+				bestFlyMate = newFlyMate;
+			}
+		}
+
+		Fly bestFlyMateMother = flies[abs(int(random(s)) -1 )];
+
+				//Random pool of individuals, the best ones are mated 
+		for(int j = 0; j < 10; j++){
+			Fly newFlyMate = flies[abs(int(random(s)) -1 )];
+			if(newFlyMate.fitness < bestFlyMateMother.fitness ){
+				bestFlyMateMother = newFlyMate;
+			}
+		}
+
+	    newflies[i] = new Fly(width/2  ,20);
+      	newflies[i].mate(bestFlyMateMother,bestFlyMate);
+    }
+
+	for(int i = 0; i < s; i++){
+		flies[i] = newflies[i];
+	}
+	
+
+    allDead = 0;
+}
+
  
- Fly getBestFly(){
+Fly updateFitness(){
    Fly result = flies[0];
    float record = 100000;
    
-  for(int i = 1; i < s ; i++){
+  for(int i = 0; i < s ; i++){
     
     float dis = dist(flies[i].position.x , flies[i].position.y , main.Objective_Final.x , main.Objective_Final.y);
+
+	flies[i].fitness = dis;
+
     if(dis < record){
       record = dis;
       result = flies[i];

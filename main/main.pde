@@ -13,6 +13,7 @@ static boolean dead;
 void setup(){
   size(1280,720);
   background(0);
+  frameRate(301989888);
   population = new FlyPopulation(population_size);
   
   p1_init = new Point(400, height / 2 );
