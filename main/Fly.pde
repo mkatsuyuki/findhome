@@ -13,10 +13,15 @@ float fitness = 0;
 
 Direction dir;
 
+Collision line1; //Linha de obstáculo 1
+Collision line2; //Linha de obstáculo 2
+Collision line3; //Linha de obstáculo 3
+
 Fly(int x , int y){
 position = new PVector(x,y);
 velocity = new PVector(0,0);
 dir = new Direction(2000);
+
 index = 0;
 canNotMove = false;
 }
@@ -46,16 +51,21 @@ void show(){
 void obstecleCheck(){
   float x = this.position.x;
   float y = this.position.y;
+  line1 = new Collision(main.p1_init.x,main.p1_init.y, main.p1_end.x,main.p1_end.y,r);
+  line2 = new Collision(main.p2_init.x,main.p2_init.y, main.p2_end.x,main.p2_end.y,r);
+  line3 = new Collision(main.p3_init.x,main.p3_init.y, main.p3_end.x,main.p3_end.y,r);
   
-  if((y >= main.p1_init.y - 5 && y <= main.p1_init.y + 5 && x >= main.p1_init.x - 10 && x <= main.p1_end.x + 10) || 
-  (x > width - 2 || x < 2 || y > height - 2 || y < 2 ) || 
-  (x >= main.Objective_Final.x - 10 && x <= main.Objective_Final.x + 10 && y >= main.Objective_Final.y - 10 && y <= main.Objective_Final.y + 10) || (index == dir.directions.length))
+  // Checa por colisões nas extremidades da janela
+  if((x > width - 2 || x < 2 || y > height - 2 || y < 2 ) || (x >= main.Objective_Final.x - 10 && x <= main.Objective_Final.x + 10 && y >= main.Objective_Final.y - 10 && y <= main.Objective_Final.y + 10) || (index == dir.directions.length))
   canNotMove = true;
   
-  // check for collision
-  // if hit, change line's stroke color
-  boolean hit = lineCircle(main.p2_init.x,main.p2_init.y, main.p2_end.x,main.p2_end.y, x,y,r);
-  if (hit) canNotMove = true;
+  //Checa por colisões nas linhas de obstáculos
+  boolean hit1 = line1.lineCircle(x,y);
+  if (hit1) canNotMove = true;
+  boolean hit2 = line2.lineCircle(x,y);
+  if (hit2) canNotMove = true;
+  boolean hit3 = line3.lineCircle(x,y);
+  if (hit3) canNotMove = true;
 }
 
 void copy(Fly best){
