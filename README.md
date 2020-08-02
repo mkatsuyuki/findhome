@@ -3,6 +3,9 @@ Paulo Katsuyuki Muraishi Kamimura - 10277040
 Afonso Henrique Piacentini Garcia - 9795272
 Felipe Barbosa de Oliveira - 10276928
 
+# Execução 
+Para executar o programa basta compilar ele na IDE do Processing 3.0 ou simplesmente executar o arquivo ".exe" gerado no diretório do programa para execução em Windows. Foi também criado um executável para Linux.
+
 # Resumo
 
 # Método
