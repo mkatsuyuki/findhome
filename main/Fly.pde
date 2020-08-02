@@ -48,7 +48,7 @@ void obstecleCheck(){
   float x = this.position.x;
   float y = this.position.y;
   
-  if((y >= main.p1.y - 5 && y <= main.p1.y + 5 && x >= main.p1.x - 10 && x <= main.p2.x + 10) || 
+  if((y >= main.p1_init.y - 5 && y <= main.p1_init.y + 5 && x >= main.p1_init.x - 10 && x <= main.p1_end.x + 10) || 
   (x > width - 2 || x < 2 || y > height - 2 || y < 2 ) || 
   (x >= main.Objective_Final.x - 10 && x <= main.Objective_Final.x + 10 && y >= main.Objective_Final.y - 10 && y <= main.Objective_Final.y + 10) || (index == dir.directions.length))
   canNotMove = true;
