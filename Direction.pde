@@ -1,12 +1,12 @@
-class Dir{
+class Direction{
 
-  PVector[] dirs;
+  PVector[] directions;
   int index;
   
-  Dir(int s){
-    dirs = new PVector[s];
+  Direction(int s){
+    directions = new PVector[s];
     for(int i = 0 ; i < s ; i++){
-      dirs[i] = PVector.fromAngle(random(PI*2));
+      directions[i] = PVector.fromAngle(random(PI*2));
     }
   }
 }
