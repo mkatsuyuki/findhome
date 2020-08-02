@@ -51,7 +51,6 @@ void newPopulation(){
 	
     Fly bestFly = updateFitness();
 
-
 	Fly[] newflies = new Fly[s];
 	newflies[0] = new Fly(width/2  ,20);
 	newflies[1] = new Fly(width/2  ,20);
@@ -72,7 +71,7 @@ void newPopulation(){
 
 		Fly bestFlyMateMother = flies[abs(int(random(s)) -1 )];
 
-				//Random pool of individuals, the best ones are mated 
+		//Random pool of individuals, the best ones are mated 
 		for(int j = 0; j < 20; j++){
 			Fly newFlyMate = flies[abs(int(random(s)) -1 )];
 			if(newFlyMate.fitness < bestFlyMateMother.fitness ){
@@ -113,8 +112,4 @@ Fly updateFitness(){
  return result;
  
  }
- 
-
-
-
 }

@@ -51,6 +51,11 @@ void obstecleCheck(){
   (x > width - 2 || x < 2 || y > height - 2 || y < 2 ) || 
   (x >= main.Objective_Final.x - 10 && x <= main.Objective_Final.x + 10 && y >= main.Objective_Final.y - 10 && y <= main.Objective_Final.y + 10) || (index == dir.directions.length))
   canNotMove = true;
+  
+  // check for collision
+  // if hit, change line's stroke color
+  boolean hit = lineCircle(main.p2_init.x,main.p2_init.y, main.p2_end.x,main.p2_end.y, x,y,r);
+  if (hit) canNotMove = true;
 }
 
 void copy(Fly best){
