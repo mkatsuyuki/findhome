@@ -53,14 +53,17 @@ void newPopulation(){
 
 
 	Fly[] newflies = new Fly[s];
-	newflies[0] = bestFly;
-	newflies[1] = bestFly;
+	newflies[0] = new Fly(width/2  ,20);
+	newflies[1] = new Fly(width/2  ,20);
+
+	newflies[0].copy(bestFly);
+	newflies[1].copy(bestFly);
 
     for(int i = 2; i < s ; i++){
 
 		Fly bestFlyMate = flies[abs(int(random(s)) -1 )];
 		//Random pool of individuals, the best ones are mated 
-		for(int j = 0; j < 10; j++){
+		for(int j = 0; j < 20; j++){
 			Fly newFlyMate = flies[abs(int(random(s)) -1 )];
 			if(newFlyMate.fitness < bestFlyMate.fitness ){
 				bestFlyMate = newFlyMate;
@@ -70,7 +73,7 @@ void newPopulation(){
 		Fly bestFlyMateMother = flies[abs(int(random(s)) -1 )];
 
 				//Random pool of individuals, the best ones are mated 
-		for(int j = 0; j < 10; j++){
+		for(int j = 0; j < 20; j++){
 			Fly newFlyMate = flies[abs(int(random(s)) -1 )];
 			if(newFlyMate.fitness < bestFlyMateMother.fitness ){
 				bestFlyMateMother = newFlyMate;
@@ -82,7 +85,8 @@ void newPopulation(){
     }
 
 	for(int i = 0; i < s; i++){
-		flies[i] = newflies[i];
+		flies[i] = new Fly(width/2  ,20);
+		flies[i].copy(newflies[i]);
 	}
 	
 

@@ -56,7 +56,6 @@ void obstecleCheck(){
 void copy(Fly best){
   for(int i = 0; i < dir.directions.length ; i++){
     dir.directions[i] = best.dir.directions[i];
-    
   }
 }
 
