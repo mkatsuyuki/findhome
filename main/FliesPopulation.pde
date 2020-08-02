@@ -1,39 +1,38 @@
-class BallsPop{
+class FlyPopulation{
 
- Ball[] balls ;
+ Fly[] flies ;
  int s;
  int allDead;
  
  
- BallsPop(int s){
+ FlyPopulation(int s){
    this.s = s;
-   balls = new Ball[s];
+   flies = new Fly[s];
  
  for(int i = 0; i < s ; i++){
-    balls[i] = new Ball(width/2  ,20);
+    flies[i] = new Fly(width/2  ,20);
    }
  
  }
  
  void update(){
   for(int i = 0; i < this.s ; i++){
-    balls[i].update();
+    flies[i].update();
    }
  }
  
  void show(){
   for(int i = 0; i < s ; i++){
     
-    balls[i].show();
+    flies[i].show();
    }
- 
  }
  
  void allDeadCheck(){
    allDead = 0;
    for(int i = 0 ; i < s ; i++){
    
-     if(balls[i].canNotMove){
+     if(flies[i].canNotMove){
      allDead++;
      }
    }
@@ -47,33 +46,31 @@ class BallsPop{
  
  
  void newPopulation(){
-   
+   generation++;
    main.dead = false;
-   
-   Ball bestBall = getBestBall();
+  
+   Fly bestFly = getBestFly();
    
    for(int i = 0; i < s ; i++){
      
-     balls[i] = new Ball(width/2  ,20);
+     flies[i] = new Fly(width/2  ,20);
      
-     balls[i].copy(bestBall);
+     flies[i].copy(bestFly);
      
    }
    allDead = 0;
- 
- 
  }
  
- Ball getBestBall(){
-   Ball result = balls[0];
+ Fly getBestFly(){
+   Fly result = flies[0];
    float record = 100000;
    
   for(int i = 1; i < s ; i++){
     
-    float dis = dist(balls[i].pos.x , balls[i].pos.y , main.Objective_Final.x , main.Objective_Final.y);
+    float dis = dist(flies[i].position.x , flies[i].position.y , main.Objective_Final.x , main.Objective_Final.y);
     if(dis < record){
       record = dis;
-      result = balls[i];
+      result = flies[i];
     }
   
   }
