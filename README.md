@@ -15,6 +15,9 @@ Nesse projeto desenvolvemos um algoritmo genético onde uma população de mosca
 Cada mosca se movimenta baseada em um vetor de direções (um vetor de acelerações da mosca, uma por iteração), de modo que seja gerado um caminho. Como todas as moscas são inicializadas no mesmo ponto, um vetor de direções igual implica em um caminho igual. É então gerado uma população de moscas, e elas são avaliadas (gerando a função fitness) pela distância até o ponto destino (quanto menor, melhor). Então, para cada nova mosca da próxima geração, é apanhado uma quantidade de moscas aleatórias da população, e as melhores serão o pai e a mãe na reprodução que era a mosca nova. Desse modo, obtivemos uma convergência para o melhor caminho natural porém rápida. Houveram situações onde as moscas se prenderam em máximos locais como explicado no vídeo, porém na maioria das vezes foi solucionado por mutação.
 
 # Vídeo
+Vídeo demonstração
+https://drive.google.com/file/d/1qRHLnQvLbz44uiMALrdDlb0vuHFxbe-V/view
+Vídeo explicação
 https://drive.google.com/file/d/16oWcgsK3OwWNtjOEo3IY6gBCXxKfihYS/view?usp=sharing
 
 # Ambiente
