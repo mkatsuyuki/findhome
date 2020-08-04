@@ -17,6 +17,7 @@ Cada mosca se movimenta baseada em um vetor de direções (um vetor de aceleraç
 # Vídeo
 Vídeo demonstração
 https://drive.google.com/file/d/1qRHLnQvLbz44uiMALrdDlb0vuHFxbe-V/view
+
 Vídeo explicação
 https://drive.google.com/file/d/16oWcgsK3OwWNtjOEo3IY6gBCXxKfihYS/view?usp=sharing
 
